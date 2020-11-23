@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @workorder.time %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @workorder.duration %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @workorder.price %>
+</p>
+
+<%= link_to 'Edit', edit_workorder_path(@workorder) %> |
+<%= link_to 'Back', workorders_path %>

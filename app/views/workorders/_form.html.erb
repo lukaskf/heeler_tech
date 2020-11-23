@@ -1,0 +1,32 @@
+<%= form_with(model: workorder, local: true) do |form| %>
+  <% if workorder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(workorder.errors.count, "error") %> prohibited this workorder from being saved:</h2>
+
+      <ul>
+        <% workorder.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.date_select :time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :duration %>
+    <%= form.number_field :duration %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
