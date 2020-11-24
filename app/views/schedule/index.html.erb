@@ -1,27 +1,29 @@
 <html>
     <body>
-        <div class="table-wrapper">
-        <table>
-        <h1><%= "Heeler Tech Schedule: #{@todays_date}"%></h1>
-        <thead>
-        <tr>
-            <th></th>
-        <% @technicians.each do |technician| %>
-            <th><%= technician.name %></th>
-        <% end %>
-        </tr>
-        </thead>
-        <tbody>
-        <% for i in 6..20 %>
-            <tr>
-                <td><%= i<=12 ? "#{i} AM" : "#{i%12} PM"%></td>
-                <% @technicians.each do |technician| %>
-                <% workorder = find_workorder(i)  %>
-                <td></td>
+        <div class="text">
+            <h1>Heeler Tech Schedule</h1>
+        </div>
+
+        <h2 id="schedule-heading"><%= "Schedule for: #{@todays_date.strftime("%m/%d/%Y")}"%></h2>
+        <div class="schedule">
+
+            <% @technicians.each_with_index do |technician, i| %>
+                <span class="tech-slot" style="grid-column: tech-<%=i+1%>; grid-row: techs;"><%= "#{technician.name}" %></span>
+            <% end %>
+           
+            <% for i in 6..18 %>
+                <h2 class="time-slot" style="grid-row: time-<%=i%>"><%= i<=12 ? "#{i} AM" : "#{i%12} PM"%></h2>
+                <% current_workorders = @workorders.where(" time >= ? and time < ? ", DateTime.parse("20191001 #{i}: 00: 00"), DateTime.parse("20191001 #{i+1}: 00: 00")) %>
+                <% current_workorders.each do |workorder| %>
+                    <div style="grid-column: tech-<%=workorder.technician_id%>; grid-row: time-<%=i%> / time-<%=18-(workorder.duration/60).ceil%>;">
+                        <h3 class="workorder-title"><%= "Location: #{workorder.location.name}" %></h3>
+                        <span class="workorder-track"><%= "City: #{workorder.location.city}" %></span>
+                        <span class="workorder-time"><%= "Start-Time: #{workorder.time.strftime("%I:%M %p")}" %></span>
+                        <span class="workorder-presenter"><%= "Price: #{workorder.price}" %></span>
+                    </div>
                 <% end %>
-            </tr>
-        <% end %>
-        </table>
+            <% end %>
+
         </div>
     </body>
 </html>

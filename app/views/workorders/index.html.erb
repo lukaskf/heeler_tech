@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Date</th>
       <th>Time</th>
       <th>Duration</th>
       <th>Price</th>
@@ -16,7 +15,6 @@
   <tbody>
     <% @workorders.each do |workorder| %>
       <tr>
-        <td><%= workorder.date %></td>
         <td><%= workorder.time %></td>
         <td><%= workorder.duration %></td>
         <td><%= workorder.price %></td>

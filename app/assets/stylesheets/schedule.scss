@@ -1,55 +1,36 @@
-// Place all the styles related to the schedule controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-html,body {
-    margin: 20px;
-    padding: 0;
-    height: 100%;
+.schedule {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-rows: 
+  [techs] Auto
+  [time-6] 1fr
+  [time-7] 1fr
+  [time-8] 1fr
+  [time-9] 1fr
+  [time-10] 1fr
+  [time-11] 1fr
+  [time-12] 1fr
+  [time-13] 1fr
+  [time-14] 1fr
+  [time-15] 1fr
+  [time-16] 1fr
+  [time-17] 1fr
+  [time-18] 1fr;
+  
+  
+  grid-template-columns:
+  [tims] 4em
+  [tech-1-start] 1fr
+  [tech-1-end tech-2-start] 1fr
+  [tech-2-end tech-3-start] 1fr
+  [tech-3-end tech-4-start] 1fr
+  [tech-4-end];
   }
   
-  body {
-    display: flex;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 90%;
-    color: #333;
-    justify-content: center;
+  
+  .tech-slot,
+  .time-slot {
+  font-weight: bold;
+  font-size:.75em;
   }
   
-  .table-wrapper {
-    max-width: 700px;
-    overflow: scroll;
-  }
-  
-  table {
-    position: relative;
-    border: 1px solid #ddd;
-    border-collapse: collapse;
-  }
-  
-  td, th {
-    white-space: nowrap;
-    border: 1px solid #ddd;
-    border-top: #fff;
-    border-bottom: #fff;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  th {
-    background-color: #eee;
-    position: sticky;
-    top: -1px;
-    z-index: 2;
-    
-    &:first-of-type {
-      left: 0;
-      z-index: 3;
-    }
-  }
-  
-  tbody tr td:first-of-type {
-    background-color: #eee;
-    position: sticky;
-    left: -1px;
-    text-align: left;
-  }
