@@ -31,9 +31,25 @@ namespace :import_csv do
         filename = File.join Rails.root, "work_orders.csv"
         counter = 0
 
+        def parse_date(date)
+            # Parses from "10/1/19 6:00" form to be able to do have DateTime parse correctly into DB: DateTime.parse('20191001 6: 00: 00')
+            date = date.strip
+            date_time = date.split(" ")
+            m_d_y = date_time[0].split("/")
+            h_m = date_time[1].split(":")
+
+            month = m_d_y[0]
+            day = m_d_y[1]
+            year = m_d_y[2]
+            
+            date_string = "20#{year}#{Integer(month)<10 ? "0"+month : month}#{Integer(day)<10 ? "0"+day : day}"
+            time_string = "#{h_m[0]}: #{h_m[1]}: 00"
+            result = date_string + " " + time_string
+            return result
+        end
+
         CSV.foreach(filename, headers:true) do |row|
-            date_time = row["time"].strip.split(" ")
-            workorder = Workorder.create(technician_id: row["technician_id"], location_id: row["location_id"], date: date_time[0],time: date_time[1], duration: row["duration"], price: row["price"])
+            workorder = Workorder.create(technician_id: row["technician_id"], location_id: row["location_id"], time: parse_date(row["time"]), duration: row["duration"], price: row["price"])
             puts "Workorder at time:#{row["time"]} - #{workorder.errors.full_messages.join(",")}" if workorder.errors.any?
             counter +=1 if workorder.persisted?
         end

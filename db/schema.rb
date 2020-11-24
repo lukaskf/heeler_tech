@@ -26,8 +26,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_011009) do
   end
 
   create_table "workorders", force: :cascade do |t|
-    t.date "date"
-    t.time "time"
+    t.datetime "time"
     t.integer "duration"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
