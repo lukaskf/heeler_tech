@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <div class="table-wrapper">
+        <table>
+        <h1><%= "Heeler Tech Schedule: #{@todays_date}"%></h1>
+        <thead>
+        <tr>
+            <th></th>
+        <% @technicians.each do |technician| %>
+            <th><%= technician.name %></th>
+        <% end %>
+        </tr>
+        </thead>
+        <tbody>
+        <% for i in 6..20 %>
+            <tr>
+                <td><%= i<=12 ? "#{i} AM" : "#{i%12} PM"%></td>
+                <% @technicians.each do |technician| %>
+                <% workorder = find_workorder(i)  %>
+                <td></td>
+                <% end %>
+            </tr>
+        <% end %>
+        </table>
+        </div>
+    </body>
+</html>

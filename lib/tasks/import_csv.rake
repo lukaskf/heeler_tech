@@ -7,7 +7,7 @@ namespace :import_csv do
 
         CSV.foreach(filename, headers:true) do |row|
             technician = Technician.create(name: row["name"])
-            puts "#{name} - #{technician.errors.full_messages.join(",")}" if technician.errors.any?
+            puts "#{row["name"]} - #{technician.errors.full_messages.join(",")}" if technician.errors.any?
             counter +=1 if technician.persisted?
         end
 
@@ -20,7 +20,7 @@ namespace :import_csv do
 
         CSV.foreach(filename, headers:true) do |row|
             location = Location.create(name: row["name"], city: row["city"])
-            puts "#{name} - #{location.errors.full_messages.join(",")}" if location.errors.any?
+            puts "#{row["name"]} - #{location.errors.full_messages.join(",")}" if location.errors.any?
             counter +=1 if location.persisted?
         end
 
@@ -32,7 +32,8 @@ namespace :import_csv do
         counter = 0
 
         CSV.foreach(filename, headers:true) do |row|
-            workorder = Workorder.create(technician_id: row["technician_id"], location_id: row["location_id"], time: row["time"], duration: row["duration"], price: row["price"])
+            date_time = row["time"].strip.split(" ")
+            workorder = Workorder.create(technician_id: row["technician_id"], location_id: row["location_id"], date: date_time[0],time: date_time[1], duration: row["duration"], price: row["price"])
             puts "Workorder at time:#{row["time"]} - #{workorder.errors.full_messages.join(",")}" if workorder.errors.any?
             counter +=1 if workorder.persisted?
         end
