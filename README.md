@@ -1,4 +1,5 @@
-# Heeler Technologies (Coding Challenge) ![Blue Heeler](app/assets/images/cattle-dog1.png =120x120)
+# Heeler Technologies (Coding Challenge) 
+![Blue Heeler](app/assets/images/cattle-dog1.png =150x150)
 
 This was a project do demonstrate building a webapp with Ruby on Rails \
 to display an event schedule from uploaded csv data. 
@@ -16,6 +17,7 @@ to display an event schedule from uploaded csv data.
     - Ensuring the dates were being parsed correctly into the database via the rake task proved to be confusing. Additionally, it was misleading when the dates/times would display correclty \
     but performing operations on datetime objects would render unexpected results.
 - Algorithm to display Workorder and Blankspace(Holder) Blocks in Front-end
+    - This algorithm had to be refactored from first in a loop that iterated on time slots to iterating on technicians, and also involved many time calculations. 
 
 ### Future Improvements
 - React (or similar JS Front-end Framework)
