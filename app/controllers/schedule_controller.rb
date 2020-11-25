@@ -5,7 +5,8 @@ class ScheduleController < ApplicationController
         @technicians = Technician.all
         @workorders = Workorder.all
 
-        @todays_date = DateTime.parse('20191001 6: 00: 00')
+        @todays_date = DateTime.parse('20191001 6: 00: 00').utc
+        @end_of_day = @todays_date.utc + (12*60*60)
     end
     def get_holder_entries(occupied_times)
         holders = []

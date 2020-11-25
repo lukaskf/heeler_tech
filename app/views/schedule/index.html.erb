@@ -1,7 +1,7 @@
 <html>
     <body>
         <div class="text">
-            <h1>Heeler Tech Schedule</h1>
+            <h1 style="display: inline;"><%= image_tag("cattle-dog1.png", :size => "100x100") %>Heeler Technologies</h1>
         </div>
 
         <h2 id="schedule-heading"><%= "Schedule for: #{@todays_date.strftime("%m/%d/%Y")}"%></h2>
@@ -27,11 +27,11 @@
                     <!-- Render holders -->
                     <% if index==0 && workorder.start_time!=6 %>
                         <div onclick="alert_time(<%= (workorder.time - @todays_date)/60 %>)" class="holder" style="grid-column: tech-<%=technician.id%>; grid-row: time-<%=6%> / time-<%=workorder.start_time%>;"></div>
-                        <div onclick="alert_time(<%= (current_workorders[index+1].time - workorder.end_time) %>)" class="holder" style="grid-column: tech-<%=technician.id%>; grid-row: time-<%=workorder.end_time%> / time-<%=current_workorders[index+1].start_time%>;"></div>
+                        <div onclick="alert_time(<%= (current_workorders[index+1].time - workorder.end_datetime)/60 %>)" class="holder" style="grid-column: tech-<%=technician.id%>; grid-row: time-<%=workorder.end_time%> / time-<%=current_workorders[index+1].start_time%>;"></div>
                     <% elsif index==current_workorders.length-1 && workorder.end_time!=18 %>
-                        <div onclick="alert_time(<%= (DateTime.parse('20191001 6: 00: 00') - workorder.end_time) %>)" class="holder" style="grid-column: tech-<%=technician.id%>; grid-row: time-<%=workorder.end_time%> / time-<%=18%>;"></div>
+                        <div onclick="alert_time(<%= (@end_of_day - workorder.end_datetime)/60 %>)" class="holder" style="grid-column: tech-<%=technician.id%>; grid-row: time-<%=workorder.end_time%> / time-<%=18%>;"></div>
                     <% elsif index!=current_workorders.length-1 %>
-                        <div onclick="alert_time(<%= (current_workorders[index+1].time - workorder.end_time) %>)" class="holder" style="grid-column: tech-<%=technician.id%>; grid-row: time-<%=workorder.end_time%> / time-<%=current_workorders[index+1].start_time%>;"></div>
+                        <div onclick="alert_time(<%= (current_workorders[index+1].time - workorder.end_datetime)/60 %>)" class="holder" style="grid-column: tech-<%=technician.id%>; grid-row: time-<%=workorder.end_time%> / time-<%=current_workorders[index+1].start_time%>;"></div>
                     <% end %>
                 <% end %>
             <% end %>
@@ -44,11 +44,8 @@
         <script>
             function alert_time(time){
                 if (time) {
-                    alert("Minutes Available To Next Workorder: "+time)
-                } else {
-                    alert("No Time Available")
+                    alert("Minutes Available: "+time)
                 }
-            }  
         </script>
     </body>
 </html>

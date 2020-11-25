@@ -9,4 +9,7 @@ class Workorder < ApplicationRecord
     def end_time
        return self.start_time+(self.duration.to_f/60).ceil
     end
+    def end_datetime
+        return self.time + self.duration*60
+    end
 end
