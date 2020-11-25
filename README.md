@@ -1,5 +1,5 @@
 # Heeler Technologies (Coding Challenge) 
-![Blue Heeler](app/assets/images/cattle-dog1.png =150x150)
+![Blue Heeler](app/assets/images/cattle-dog1.png =150x)
 
 This was a project do demonstrate building a webapp with Ruby on Rails \
 to display an event schedule from uploaded csv data. 
