@@ -1,24 +1,21 @@
-# README
+# Heeler Technologies (Coding Challenge) 
+![Blue Heeler](app/assets/images/cattle-dog1.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This was a project do demonstrate building a webapp with Ruby on Rails \
+to display an event schedule from uploaded csv data. 
 
-Things you may want to cover:
+### Design & Approach
+foobar
+### Difficulties in Development
+fdasfdasf
 
-* Ruby version
+### Future Improvements
+fdafdasfd
 
-* System dependencies
+### Rake Task to Import Data
 
-* Configuration
+explanation
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rake 
+```
