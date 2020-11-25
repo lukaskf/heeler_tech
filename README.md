@@ -1,5 +1,4 @@
-# Heeler Technologies (Coding Challenge) 
-<img src="app/assets/images/cattle-dog1.png" alt="Blue Heeler" width="150" height="150"/>
+# Heeler Technologies (Coding Challenge) <img src="app/assets/images/cattle-dog1.png" alt="Blue Heeler" width="150" height="150"/>
 
 This was a project do demonstrate building a webapp with Ruby on Rails \
 to display an event schedule from uploaded csv data. 
