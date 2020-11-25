@@ -2,7 +2,7 @@ namespace :import_csv do
     desc "Imports data from CSV to App & DB"    
     task import_technicians: :environment do
         puts "Importing Technicians Data..."
-        filename = File.join Rails.root, "technicians.csv"
+        filename = File.join Rails.root, "lib/assets/technicians.csv"
         counter = 0
 
         CSV.foreach(filename, headers:true) do |row|
@@ -15,7 +15,7 @@ namespace :import_csv do
     end
     task import_locations: :environment do
         puts "Importing Locations Data..."
-        filename = File.join Rails.root, "locations.csv"
+        filename = File.join Rails.root, "lib/assets/locations.csv"
         counter = 0
 
         CSV.foreach(filename, headers:true) do |row|
@@ -28,7 +28,7 @@ namespace :import_csv do
     end
     task import_workorders: :environment do
         puts "Importing Workorders Data..."
-        filename = File.join Rails.root, "work_orders.csv"
+        filename = File.join Rails.root, "lib/assets/work_orders.csv"
         counter = 0
 
         def parse_date(date)
