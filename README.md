@@ -47,7 +47,6 @@ rake import_csv:import_<model name>s
     - Click on available slots to create workorders
     - Display schedule for multiple days
     - User accounts and login
+    - Display data for variable number of technicians
 - Rake task be passed argument for path/filename
-- Display data for variable number of technicians(coming soon)
-    - With a small amount of effor this can be achieved
 - Testing
