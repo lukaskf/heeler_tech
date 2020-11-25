@@ -15,7 +15,7 @@
                 <h2 class="time-slot" style="grid-row: time-<%=i%>"><%= i<=12 ? "#{i} AM" : "#{i%12} PM"%></h2>
                 <% current_workorders = @workorders.where(" time >= ? and time < ? ", DateTime.parse("20191001 #{i}: 00: 00"), DateTime.parse("20191001 #{i+1}: 00: 00")) %>
                 <% current_workorders.each do |workorder| %>
-                    <div style="grid-column: tech-<%=workorder.technician_id%>; grid-row: time-<%=i%> / time-<%=18-(workorder.duration/60).ceil%>;">
+                    <div class="workorder" style="grid-column: tech-<%=workorder.technician_id%>; grid-row: time-<%=i%> / time-<%=i+(workorder.duration/60).ceil%>;">
                         <h3 class="workorder-title"><%= "Location: #{workorder.location.name}" %></h3>
                         <span class="workorder-track"><%= "City: #{workorder.location.city}" %></span>
                         <span class="workorder-time"><%= "Start-Time: #{workorder.time.strftime("%I:%M %p")}" %></span>
