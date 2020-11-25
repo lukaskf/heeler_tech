@@ -9,21 +9,46 @@
 
             <% @technicians.each_with_index do |technician, i| %>
                 <span class="tech-slot" style="grid-column: tech-<%=i+1%>; grid-row: techs;"><%= "#{technician.name}" %></span>
+
+                <!-- Get workorders for each technician -->
+                <% current_workorders = @workorders.where("technician_id = ?", technician.id) %>
+                
+                <!-- Render workorders-->
+                <% current_workorders.each_with_index do |workorder, index| %>
+                    <div class="workorder" style="grid-column: tech-<%=workorder.technician_id%>; grid-row: time-<%=workorder.start_time%> / time-<%= workorder.end_time %>;">
+                        <h3 class="workorder-title"><%= "Location: #{workorder.location.name}" %></h3>
+                        <span class="workorder-track"><%= "City: #{workorder.location.city}" %></span>
+                        <span class="workorder-presenter"><%= "Price: #{workorder.price}" %></span>
+                        <span class="workorder-time"><%= "Start-Time: #{workorder.time.strftime("%I:%M %p")}" %></span>
+                        <!--TODO DELETE:-->
+                        <span class="workorder-time"><%= "Duration: #{workorder.duration}" %></span>
+                        <span class="workorder-time"><%= "End-Time: #{workorder.end_time}" %></span>
+                    </div>
+                    <!-- Render holders -->
+                    <% if index==0 && workorder.start_time!=6 %>
+                        <div onclick="alert_time(<%= (workorder.time - @todays_date)/60 %>)" class="holder" style="grid-column: tech-<%=technician.id%>; grid-row: time-<%=6%> / time-<%=workorder.start_time%>;"></div>
+                        <div onclick="alert_time(<%= (current_workorders[index+1].time - workorder.end_time) %>)" class="holder" style="grid-column: tech-<%=technician.id%>; grid-row: time-<%=workorder.end_time%> / time-<%=current_workorders[index+1].start_time%>;"></div>
+                    <% elsif index==current_workorders.length-1 && workorder.end_time!=18 %>
+                        <div onclick="alert_time(<%= (DateTime.parse('20191001 6: 00: 00') - workorder.end_time) %>)" class="holder" style="grid-column: tech-<%=technician.id%>; grid-row: time-<%=workorder.end_time%> / time-<%=18%>;"></div>
+                    <% elsif index!=current_workorders.length-1 %>
+                        <div onclick="alert_time(<%= (current_workorders[index+1].time - workorder.end_time) %>)" class="holder" style="grid-column: tech-<%=technician.id%>; grid-row: time-<%=workorder.end_time%> / time-<%=current_workorders[index+1].start_time%>;"></div>
+                    <% end %>
+                <% end %>
             <% end %>
            
             <% for i in 6..18 %>
                 <h2 class="time-slot" style="grid-row: time-<%=i%>"><%= i<=12 ? "#{i} AM" : "#{i%12} PM"%></h2>
-                <% current_workorders = @workorders.where(" time >= ? and time < ? ", DateTime.parse("20191001 #{i}: 00: 00"), DateTime.parse("20191001 #{i+1}: 00: 00")) %>
-                <% current_workorders.each do |workorder| %>
-                    <div class="workorder" style="grid-column: tech-<%=workorder.technician_id%>; grid-row: time-<%=i%> / time-<%=i+(workorder.duration/60).ceil%>;">
-                        <h3 class="workorder-title"><%= "Location: #{workorder.location.name}" %></h3>
-                        <span class="workorder-track"><%= "City: #{workorder.location.city}" %></span>
-                        <span class="workorder-time"><%= "Start-Time: #{workorder.time.strftime("%I:%M %p")}" %></span>
-                        <span class="workorder-presenter"><%= "Price: #{workorder.price}" %></span>
-                    </div>
-                <% end %>
             <% end %>
 
         </div>
+        <script>
+            function alert_time(time){
+                if (time) {
+                    alert("Minutes Available To Next Workorder: "+time)
+                } else {
+                    alert("No Time Available")
+                }
+            }  
+        </script>
     </body>
 </html>
