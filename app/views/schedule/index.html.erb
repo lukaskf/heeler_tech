@@ -20,9 +20,6 @@
                         <span class="workorder-track"><%= "City: #{workorder.location.city}" %></span>
                         <span class="workorder-presenter"><%= "Price: #{workorder.price}" %></span>
                         <span class="workorder-time"><%= "Start-Time: #{workorder.time.strftime("%I:%M %p")}" %></span>
-                        <!--TODO DELETE:-->
-                        <span class="workorder-time"><%= "Duration: #{workorder.duration}" %></span>
-                        <span class="workorder-time"><%= "End-Time: #{workorder.end_time}" %></span>
                     </div>
                     <!-- Render holders -->
                     <% if index==0 && workorder.start_time!=6 %>
