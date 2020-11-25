@@ -2,6 +2,27 @@
 
 This was a project do demonstrate building a webapp with Ruby on Rails \
 to display an event schedule from uploaded csv data. 
+
+### Installation and Usage
+This project was built using Ruby 2.6 and Rails 6.0, If you need ruby please see official documentation here: Ruby(https://www.ruby-lang.org/en/documentation/installation/) \
+    - With Ruby installed you can then run `gem install rails`
+    - To install dependencies run `bundle install`, this utilizes the Gemfile to install ruby dependencies.
+    - To start the rails server run `rails server` and go to `localhost:3000` in your browser!
+
+#### Rake Task to Import Data
+There are three models that data can be imported to: Technicians, Locations, and Workorders. To update data to be uploaded overwrite the data in the csv's found in `lib/assets/` \ 
+(rake task has path/filenames hardcoded).
+
+To import data for technicans, locations, and workorders in one command:
+```
+rake import_csv:import_technicians import_csv:import_locations import_csv:import_workorders
+```
+
+To import data for just one model:
+```
+rake import_csv:import_<model name>s
+```
+
 ### Design & Approach
 - Crawl, Walk, Then Run
     - When tackeling full-stack projects, and particularly with difficult problems and new technologies I find this to be the best approach to development. First crawl, get the basics down and \
@@ -28,22 +49,3 @@ to display an event schedule from uploaded csv data.
 - Display data for variable number of technicians(coming soon)
     - With a small amount of effor this can be achieved
 - Testing
-
-### Installation and Usage
-This project was built using Ruby 2.6 and Rails 6.0, If you need ruby please see official documentation here: Ruby(https://www.ruby-lang.org/en/documentation/installation/) \
-With Ruby installed you can then run `gem install rails`.\
-To install dependencies run `bundle install`, this utilizes the Gemfile to install ruby dependencies. \
-After that you should be off to the races, to start the rails server run `rails server` and go to `localhost:3000` in your browser!
-#### Rake Task to Import Data
-There are three models that data can be imported to: Technicians, Locations, and Workorders. To update data to be uploaded overwrite the data in the csv's found in `lib/assets/` \ 
-(rake task has path/filenames hardcoded).
-
-To import data for technicans, locations, and workorders in one command:
-```
-rake import_csv:import_technicians import_csv:import_locations import_csv:import_workorders
-```
-
-To import data for just one model:
-```
-rake import_csv:import_<model name>s
-```
