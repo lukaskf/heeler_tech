@@ -51,3 +51,8 @@ rake import_csv:import_<model name>s
     - Display data for variable number of technicians
 - Rake task be passed argument for path/filename
 - Testing
+
+### Preview
+
+<img src="app/assets/images/preview.png" alt="Preview" width="400" height="300"/>
+<img src="app/assets/images/onclick.png" alt="On Click Alert" width="100" height="100"/>
