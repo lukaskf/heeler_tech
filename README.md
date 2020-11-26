@@ -54,5 +54,5 @@ rake import_csv:import_<model name>s
 
 ### Preview
 
-<img src="app/assets/images/preview.png" alt="Preview" width="400" height="300"/>
-<img src="app/assets/images/onclick.png" alt="On Click Alert" width="100" height="100"/>
+<img src="app/assets/images/preview.png" alt="Preview"/>
+<img src="app/assets/images/onclick.png" alt="On Click Alert"/>
