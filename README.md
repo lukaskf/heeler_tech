@@ -7,10 +7,9 @@ to display an event schedule from uploaded csv data.
 #### Install / Run:
 1) To clone this repo run `git clone https://github.com/lukaskf/heeler_tech.git`
 2) This project was built using Ruby 2.6 and Rails 6.0, If you need ruby please see official documentation here: Ruby(https://www.ruby-lang.org/en/documentation/installation/) \
-3) With Ruby installed you can then run `gem install rails`
-4) To install dependencies run `bundle install`, this utilizes the Gemfile to install ruby dependencies. Follow this by `yarn install --check-files`. (This may take a while)
-5) Database migration via `rails db:migrate`
-6) To start the rails server run `rails server` and go to `localhost:3000` in your browser!
+3) To install dependencies run `bundle install`, this utilizes the Gemfile to install ruby dependencies. Follow this by `yarn install --check-files`. (This may take a while)
+4) Database migration via `rails db:migrate`
+5) To start the rails server run `rails server` and go to `localhost:3000` in your browser!
 
 #### Rake Task to Import Data:
 There are three models that data can be imported to: Technicians, Locations, and Workorders. To update data to be uploaded overwrite the data in the csv's found in `lib/assets/` \ 
