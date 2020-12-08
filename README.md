@@ -4,13 +4,13 @@ This was a project do demonstrate building a webapp with Ruby on Rails \
 to display an event schedule from uploaded csv data. 
 
 ### Installation and Usage
-#### Install / Run:
+#### Clone this repo
 1) To clone this repo run `git clone https://github.com/lukaskf/heeler_tech.git`
-##### Run using Docker
+#### Run using Docker
 2) Build the image using `docker build -t heeler_tech:1.0 .`
 3) Run a container using `docker run -it -p 3000:3000 heeler_tech:1.0`
 4) Go to `0.0.0.0:3000` in your browser!
-##### Run Locally 
+#### Run Locally 
 2) This project was built using Ruby 2.6 and Rails 6.0, If you need ruby please see official documentation here: Ruby(https://www.ruby-lang.org/en/documentation/installation/) \
 3) To install dependencies run `bundle install`, this utilizes the Gemfile to install ruby dependencies. Follow this by `yarn install --check-files`. (This may take a while)
 4) Database migration via `rails db:migrate`
