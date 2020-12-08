@@ -17,7 +17,7 @@ to display an event schedule from uploaded csv data.
 5) To start the rails server run `rails server`
 6) Go to `localhost:3000` in your browser!
 
-#### Rake Task to Import Data:
+#### Rake Task to Import Data
 There are three models that data can be imported to: Technicians, Locations, and Workorders. To update data to be uploaded overwrite the data in the csv's found in `lib/assets/` \ 
 (rake task has path/filenames hardcoded).
 
