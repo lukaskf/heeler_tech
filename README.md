@@ -30,6 +30,8 @@ To import data for just one model:
 ```
 rake import_csv:import_<model name>s
 ```
+##### Running Rake Task in Docker Container
+To execute rake tasks in a Docker container first run `docker exec -it  $(docker ps -a | grep heeler_tech:1.0 | grep Up | cut -c 1-12) bash` to get to a shell and then run the rake task. 
 
 ### Design & Approach
 - Crawl, Walk, Then Run
