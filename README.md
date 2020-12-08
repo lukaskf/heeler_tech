@@ -5,7 +5,7 @@ to display an event schedule from uploaded csv data.
 
 ### Installation and Usage
 #### Install / Run:
-1) To clone this repo run 
+1) To clone this repo run `git clone https://github.com/lukaskf/heeler_tech.git`
 ##### Run using Docker
 2) Build the image using `docker build -t heeler_tech:1.0 .`
 3) Run a container using `docker run -it -p 3000:3000 heeler_tech:1.0`
